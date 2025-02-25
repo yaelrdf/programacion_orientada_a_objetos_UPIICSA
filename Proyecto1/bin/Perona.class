@@ -1,0 +1,16 @@
+class Persona{
+    private String nombre;
+    private String aPaterno;
+    private String aMaterno;
+    private int edad;
+    private boolean soltero;
+
+    //Constructor
+    public Persona(String n, String ap, String am, int edad){
+        nombre=n;
+        aPaterno=ap;
+        aMaterno=am;
+        edad=edad;
+        soltero=true;
+    }   
+}
