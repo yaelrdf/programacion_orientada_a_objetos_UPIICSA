@@ -15,5 +15,5 @@ Repositorio de trabajo de programacion para programacion orientada a objetos UPI
 
 ___
 ## Indice
-- [Ejemplos de como utilizar clases PROYECTO1 1](Proyecto1/src)
+- [Ejemplos de como utilizar clases PROYECTO 1](Proyecto1/src)
 
