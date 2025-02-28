@@ -8,7 +8,7 @@ Repositorio de trabajo de programacion para programacion orientada a objetos UPI
 
 
 >[!IMPORTANT]
->Todo el codigo y trabajo que se presenta esta desarrollado en JAVA puro, sin utilizar ningun IDE como eclipse o NetBeans
+>Todo el codigo y trabajo que se presenta esta desarrollado en JAVA puro, utilizando VS Code como IDE
 
 > [!TIP]
 > En el Indice solo se listan los programas con una breve descripcion del codigo, el hipervinculo solamente conduce a la lista de archivos fuente o codigo
