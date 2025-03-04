@@ -25,8 +25,8 @@ public class Proyecto1 {
         for (int i = 0; i < LstPersonas.size(); i++) {
             Persona objPersona3 = LstPersonas.get(i);
             System.out.println("Nombres: " + objPersona3.getNombre());
-            System.out.println("Apellido Paterno: " + objPersona3.getaPaterno());
-            System.out.println("Apellido Materno: " + objPersona3.getaMaterno());
+            System.out.println("Apellido Paterno: " + objPersona3.getAPaterno());
+            System.out.println("Apellido Materno: " + objPersona3.getAMaterno());
         }
     }  
 }
