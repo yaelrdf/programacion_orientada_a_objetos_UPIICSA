@@ -4,11 +4,11 @@ import java.util.Scanner;
 public class Proyecto1 {
     public static void main(String[] args) {
         Persona objPersona1 = new Persona("Yael", "Saldana", "Flores");
-        
+       
         // Create ArrayList
         ArrayList<Persona> LstPersonas = new ArrayList<>();
         LstPersonas.add(objPersona1);
-        
+       
         for (int i = 0; i < 3; i++) {
             // Lectura de informacion del usuario
             Scanner entrada = new Scanner(System.in);
@@ -22,11 +22,20 @@ public class Proyecto1 {
             LstPersonas.add(objPersona3);
         }
         
+        // Eliminar el primer elemento del array
+        LstPersonas.remove(0);
+        
+        // Insertar nuevo elemento
+        Persona objPer = new Persona("Tstss", "Extra", "Arreglo");
+        LstPersonas.add(objPer);
+        
+        // Imprimir elementos
         for (int i = 0; i < LstPersonas.size(); i++) {
             Persona objPersona3 = LstPersonas.get(i);
             System.out.println("Nombres: " + objPersona3.getNombre());
             System.out.println("Apellido Paterno: " + objPersona3.getAPaterno());
             System.out.println("Apellido Materno: " + objPersona3.getAMaterno());
+            System.out.println();
         }
     }  
 }
