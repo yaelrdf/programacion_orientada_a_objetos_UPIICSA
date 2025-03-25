@@ -21,5 +21,24 @@ class Boletos {
     }
 
     //Getters y setters
+    public String getIDboleto(){return idBoleto;}
+    public void setIDboleto(String idBoleto){this.idBoleto=idBoleto;}
     
+    public String getPeliclula(){return pelicula;}
+    public void setPelicula(String pelicula){this.pelicula=pelicula;}
+
+    public int getSala(){return sala;}
+    public void setSala(int sala){this.sala = sala;}
+    
+    public LocalDate getFechaHora(){return fechaHora;}
+    public void setFechaHora(LocalDate fechaHora){this.fechaHora = fechaHora;}
+    
+    public double getPrecio(){return precio;}
+    public void setPrecio(double precio){this.precio = precio;}
+    
+    public LocalDate getFechaHoraDeCompra(){return fechaHoraDeCompra;}
+    public void setFechaHoraDeCompra(LocalDate fechaHoraDeCompra){this.fechaHoraDeCompra = fechaHoraDeCompra;}
+    
+    public double getPrecioUnitario(){return precioUnitario;}
+    public void setPrecioUnitario(double precioUnitario){this.precioUnitario = precioUnitario;}
 }
