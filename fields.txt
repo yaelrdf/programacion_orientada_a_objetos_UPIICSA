@@ -1,10 +1,4 @@
-private String ISBN;
-private String editorial;
-private List<String> autores;
-private String ubicacion;
-private LocalDate fechaPublicacion;
-private Integer noPaginas;
-private String categoria;
-private Integer claveInterna;
-private String tirulo;
-private Integer piezasDisponibles;
+protected float gananciaObtenida;
+protected LocalDate fechaVenta;
+protected LocalDate fechaCompra;
+    

@@ -4,7 +4,7 @@ import sys
 def parse_java_fields(input_text):
     """Parse Java fields from input text."""
     # Regular expression to match field declarations
-    pattern = r'private\s+(\w+(?:<\w+>)?)\s+(\w+);'
+    pattern = r'protected\s+(\w+(?:<\w+>)?)\s+(\w+);'
     matches = re.findall(pattern, input_text)
     
     fields = []
