@@ -9,16 +9,6 @@ public class Intermediarios extends Terreno{
     protected float gananciaEsperada;
     protected LocalDate fechaTrato;
 
-    //Constructor
-    public Intermediarios(String nombre, String telefono, String direccion, String empresa, int costosDePromocion, int gananciaEsperada, LocalDate fechaTrato){
-        this.nombre=nombre;
-        this.telefono=telefono;
-        this.direccion=direccion;
-        this.empresa=empresa;
-        this.costosDePromocion=costosDePromocion;
-        this.gananciaEsperada=gananciaEsperada;
-        this.fechaTrato=fechaTrato;
-    }
     
     //Getters y setters
     public String getNombre(){return nombre;}
@@ -44,7 +34,7 @@ public class Intermediarios extends Terreno{
 
     //Metodo ejemplo
     public void impresionIntermediarios(){
-    System.out.println("========================Imprimiendo desde la clase intemediarios=======================");
+    System.out.println("============Imprimiendo desde la clase intemediarios============");
     printTerrenos();
     }
 

@@ -5,12 +5,6 @@ public class Propios extends Terreno {
     protected float costoEscrituracion;
     protected List<String> pagosPendientes;
 
-    //Constructor
-    public Propios(float costoCompra, float costoEscrituracion, List<String> pagosPendientes){
-        this.costoCompra=costoCompra;
-        this.costoEscrituracion=costoEscrituracion;
-        this.pagosPendientes=pagosPendientes;
-    }
     
     //Getters y setters
     public float getCostoCompra(){return costoCompra;}

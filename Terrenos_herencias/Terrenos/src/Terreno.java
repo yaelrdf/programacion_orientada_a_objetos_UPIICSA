@@ -6,15 +6,6 @@ public class Terreno {
     protected String statusPapeles;
     protected float precioPublico;
 
-    //Constructor
-    public Terreno(String direccion, int metrosDeFrente, int metrosCuadrados, boolean bardeado, String statusPapeles, float precioPublico){
-        this.direccion=direccion;
-        this.metrosDeFrente=metrosDeFrente;
-        this.metrosCuadrados=metrosCuadrados;
-        this.bardeado=bardeado;
-        this.statusPapeles=statusPapeles;
-        this.precioPublico=precioPublico;
-    }
     
     //getters y setters
     public String getDireccion(){return direccion;}
@@ -37,7 +28,8 @@ public class Terreno {
     
     //Metodo ejemplo para demostracion
     public void printTerrenos(){
-        System.out.println("Imprimiendo desde la clase Terrenos");
+        System.out.println("Imprimiendo desde la clase Terrenos por herencia");
+        System.out.println("===============FIN==============\nUltimo padre(Terrenos) heredado por las clases mencionadas anteriormente");
     }
 }
 
