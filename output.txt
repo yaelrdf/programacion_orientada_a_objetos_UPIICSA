@@ -1,13 +1,13 @@
-public Venta(float gananciaObtenida, LocalDate fechaVenta, LocalDate fechaCompra){
-    this.gananciaObtenida=gananciaObtenida;
-    this.fechaVenta=fechaVenta;
-    this.fechaCompra=fechaCompra;
+public Renta(int anticipo, int tiempoRenta, LocalDate fechaTrato){
+    this.anticipo=anticipo;
+    this.tiempoRenta=tiempoRenta;
+    this.fechaTrato=fechaTrato;
 }
 
 //Getters y setters
-public float getGananciaObtenida(){return gananciaObtenida;}
-public void setGananciaObtenida(float gananciaObtenida){this.gananciaObtenida=gananciaObtenida;}
-public LocalDate getFechaVenta(){return fechaVenta;}
-public void setFechaVenta(LocalDate fechaVenta){this.fechaVenta=fechaVenta;}
-public LocalDate getFechaCompra(){return fechaCompra;}
-public void setFechaCompra(LocalDate fechaCompra){this.fechaCompra=fechaCompra;}
+public int getAnticipo(){return anticipo;}
+public void setAnticipo(int anticipo){this.anticipo=anticipo;}
+public int getTiempoRenta(){return tiempoRenta;}
+public void setTiempoRenta(int tiempoRenta){this.tiempoRenta=tiempoRenta;}
+public LocalDate getFechaTrato(){return fechaTrato;}
+public void setFechaTrato(LocalDate fechaTrato){this.fechaTrato=fechaTrato;}

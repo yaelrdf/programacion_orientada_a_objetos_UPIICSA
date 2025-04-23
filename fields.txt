@@ -1,4 +1,3 @@
-protected float gananciaObtenida;
-protected LocalDate fechaVenta;
-protected LocalDate fechaCompra;
-    
+protected int anticipo;
+protected int tiempoRenta;
+protected LocalDate fechaTrato;
