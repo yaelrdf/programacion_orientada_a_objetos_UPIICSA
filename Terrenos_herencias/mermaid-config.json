@@ -1,0 +1,6 @@
+{
+    "theme": "dark",
+    "look": "handDrawn",
+    "layout": "elk",
+    "elk": {"mergeEdges": false, "nodePlacementStrategy": "LINEAR_SEGMENTS"}
+  }

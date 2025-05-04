@@ -1,0 +1,95 @@
+config:
+    look: handDrawn
+    theme: neutral
+
+classDiagram
+    %%Intermediarios
+    Propiedad <|-- Intermediarios
+    Propiedad <|-- Propios
+    
+    %% Clientes
+    Propiedad  <|--Cliente
+    Cliente  <|-- Venta
+    Cliente  <|-- Renta
+
+    %%Terrenos y casas con lo que sobra
+    Propiedad  <|-- Terreno
+    Propiedad  <|-- Habitables
+    Propiedad  <|-- Espacio Comercial
+
+    %%Habitables
+    Habitables  <|-- Casas
+    Habitables  <|-- Departamentos
+
+    
+    class Propiedad{
+        +direccion
+        +metrosCuadrados
+        +metrosDeFrente
+        +servicios
+        +statusPapeles
+        +precioPublico
+        +estado[Rentado, Comprado, Disponible]
+    }
+
+    class Terreno{
+        +bardeado
+    }
+
+    class Habitables{
+        +numeroHabitaciones
+        +numeroBaniosCompletos
+        +numeroMedioBanios
+        +espacioEstacionamiento
+        +MetrosDeConstruccion
+    }
+
+    class Casas{
+        +pisos
+        +patio
+    }
+
+    class Departamentos{
+        +Elevador
+        +cuotaMantenimiento
+    }
+
+    class Espacio Comercial{
+        +tipo[Tienda,Oficina,Nave Industrial]
+        +ocupacionMax
+        +puertaCarga
+    }
+
+    class Cliente{
+        +nombre
+        +telefono
+        +documentoIdentificacion
+    }
+
+    class Venta{
+        +gananciaObtenida
+        +fechaVenta
+        +fechaCompra
+    }
+
+    class Renta{
+        +anticipo
+        +tiempoRentta
+        +fechaTrato        
+    }
+
+    class Intermediarios{
+        +nombre
+        +direccion
+        +telefono
+        +empresa
+        +costoPromocion
+        +gananciaEsperada
+        +fechaTrato
+    }
+
+    class Propios{
+        +costoCompra
+        +costoEscrituracion
+        +pagosPendientes
+    }
