@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Propios extends Terreno {
+public class Propios extends Propiedad {
     protected float costoCompra;
     protected float costoEscrituracion;
     protected List<String> pagosPendientes;
@@ -18,7 +18,7 @@ public class Propios extends Terreno {
     
     //metodo ejemplo
     public void printPropios(){
-        System.out.println("==========Imprimiendo desde la clase Propios============");
-        printTerrenos();
+        System.out.println("==========Imprimiendo desde la clase Propios por invocacion ============");
+        printPropiedad();
     }
 }

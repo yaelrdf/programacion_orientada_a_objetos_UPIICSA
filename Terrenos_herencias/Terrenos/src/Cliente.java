@@ -1,4 +1,4 @@
-public class Cliente extends Terreno{
+public class Cliente extends Propiedad{
     protected String nombre;
     protected String telefono;
     protected String documentoIdentificacion;
@@ -17,7 +17,7 @@ public class Cliente extends Terreno{
     //Metodo demostracion
     public void printCliente(){
         System.out.println("Imprimiendo desde la clase Cliente por herencia");
-        printTerrenos();
+        printPropiedad();
     }
 
 }

@@ -1,3 +1,2 @@
-protected int anticipo;
-protected int tiempoRenta;
-protected LocalDate fechaTrato;
+protected boolean elevador;
+protected float cuotaMantenimiento;

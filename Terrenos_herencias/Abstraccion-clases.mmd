@@ -1,7 +1,3 @@
-config:
-    look: handDrawn
-    theme: neutral
-
 classDiagram
     %%Intermediarios
     Propiedad <|-- Intermediarios
@@ -15,7 +11,7 @@ classDiagram
     %%Terrenos y casas con lo que sobra
     Propiedad  <|-- Terreno
     Propiedad  <|-- Habitables
-    Propiedad  <|-- Espacio Comercial
+    Propiedad  <|-- Local Comercial
 
     %%Habitables
     Habitables  <|-- Casas
@@ -54,8 +50,8 @@ classDiagram
         +cuotaMantenimiento
     }
 
-    class Espacio Comercial{
-        +tipo[Tienda,Oficina,Nave Industrial]
+    class Local Comercial{
+        +tipo[Tienda,Oficina]
         +ocupacionMax
         +puertaCarga
     }

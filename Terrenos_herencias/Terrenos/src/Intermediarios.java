@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class Intermediarios extends Terreno{
+public class Intermediarios extends Propiedad{
     protected String nombre;
     protected String telefono;
     protected String direccion;
@@ -33,9 +33,9 @@ public class Intermediarios extends Terreno{
     public void setFechaTrato(LocalDate fechaTrato){this.fechaTrato=fechaTrato;}
 
     //Metodo ejemplo
-    public void impresionIntermediarios(){
-    System.out.println("============Imprimiendo desde la clase intemediarios============");
-    printTerrenos();
+    public void printIntermediarios(){
+    System.out.println("============Imprimiendo desde la clase intemediarios por invocacion============");
+    printPropiedad();
     }
 
 }
