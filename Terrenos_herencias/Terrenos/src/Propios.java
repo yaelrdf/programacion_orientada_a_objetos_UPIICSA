@@ -1,24 +1,22 @@
 import java.util.List;
 
-public class Propios extends Propiedad {
-    protected float costoCompra;
-    protected float costoEscrituracion;
-    protected List<String> pagosPendientes;
-
+public interface Propios extends Terreno, Departamentos, Casas, LocalComercial{
+    // Getters y Setters
+    float getCostoCompra();
+    void setCostoCompra(float costoCompra);
     
-    //Getters y setters
-    public float getCostoCompra(){return costoCompra;}
-    public void setCostoCompra(float costoCompra){this.costoCompra=costoCompra;}
+    float getCostoEscrituracion();
+    void setCostoEscrituracion(float costoEscrituracion);
     
-    public float getCostoEscrituracion(){return costoEscrituracion;}
-    public void setCostoEscrituracion(float costoEscrituracion){this.costoEscrituracion=costoEscrituracion;}
+    List<String> getPagosPendientes();
+    void setPagosPendientes(List<String> pagosPendientes);
     
-    public List<String> getPagosPendientes(){return pagosPendientes;}
-    public void setPagosPendientes(List<String> pagosPendientes){this.pagosPendientes=pagosPendientes;}
-    
-    //metodo ejemplo
-    public void printPropios(){
-        System.out.println("==========Imprimiendo desde la clase Propios por invocacion ============");
-        printPropiedad();
+    default void printPropios(){
+        System.out.println("====Imprimiendo desde la interface PROPIOS====");
+        printTerrenos();
+        printDepartamentos();
+        printCasas();
+        printComercial();
+        System.out.println("\n");
     }
 }

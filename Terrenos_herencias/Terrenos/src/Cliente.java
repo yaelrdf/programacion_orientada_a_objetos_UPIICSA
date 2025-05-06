@@ -1,4 +1,8 @@
-public class Cliente extends Propiedad{
+import java.time.LocalDate;
+import java.util.List;
+
+public class Cliente implements Propios, Intermediarios{
+    
     protected String nombre;
     protected String telefono;
     protected String documentoIdentificacion;
@@ -16,8 +20,8 @@ public class Cliente extends Propiedad{
     
     //Metodo demostracion
     public void printCliente(){
-        System.out.println("Imprimiendo desde la clase Cliente por herencia");
-        printPropiedad();
+        System.out.println("====Imprimiendo desde la clase CLIENTE por herencia=====");
+        printIntermediarios();
+        printPropios();
     }
-
 }

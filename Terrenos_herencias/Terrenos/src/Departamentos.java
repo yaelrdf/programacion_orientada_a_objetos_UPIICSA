@@ -1,18 +1,13 @@
-public class Departamentos  extends Habitables{
-    protected boolean elevador;
-    protected float cuotaMantenimiento;
+public interface Departamentos extends Habitables {
+    // Getters y setters
+    boolean getElevador();
+    void setElevador(boolean elevador);
 
-    //getters setters
-    public boolean getElevador(){return elevador;}
-    public void setElevador(boolean elevador){this.elevador=elevador;}
+    float getCuotaMantenimiento();
+    void setCuotaMantenimiento(float cuotaMantenimiento);
 
-    public float getCuotaMantenimiento(){return cuotaMantenimiento;}
-    public void setCuotaMantenimiento(float cuotaMantenimiento){this.cuotaMantenimiento=cuotaMantenimiento;}
-
-    //Metodo demostracion
-    public void printDepartamentos(){
-        System.out.println("==========Imprimiendo desde la clase Departamentos por invocacion ==========");
+    default void printDepartamentos(){
+        System.out.println("====Imprimiendo desde la interface DEPARTAMENTOS por herencia ======");
         printHabitables();
     }
 }
-

@@ -1,13 +1,11 @@
-public class Terreno extends Propiedad{
-    protected boolean bardeado;
-
-    //getters y setters
-     public boolean getBardeado(){return bardeado;}
-     public void setBardeado(){boolean bardeado;}{this.bardeado=bardeado;}
+public interface Terreno extends Propiedad {
+    // Getters y Setters
+    boolean getBardeado();
+    void setBardeado(boolean bardeado);
 
     //Metodo demostracion
-    public void printTerrenos(){
-        System.out.println("=====Imprimiendo desde la clcase Terrenos por invocacion========");
+    default void printTerrenos(){
+        System.out.println("===Imprimiendo desde la interface Terrenos====");
         printPropiedad();
     }
 }

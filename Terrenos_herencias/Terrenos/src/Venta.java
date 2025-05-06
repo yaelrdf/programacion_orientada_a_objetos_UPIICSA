@@ -17,7 +17,7 @@ public class Venta extends Cliente{
 
     //Metodo ejemplo
     public void printVenta(){
-        System.out.println("==========Impresion directa clase Venta por invocacion===========");
+        System.out.println("=============Impresion directa clase Venta por invocacion directa==============");
         printCliente();
     }
 

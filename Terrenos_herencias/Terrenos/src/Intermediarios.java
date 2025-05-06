@@ -1,41 +1,31 @@
 import java.time.LocalDate;
 
-public class Intermediarios extends Propiedad{
-    protected String nombre;
-    protected String telefono;
-    protected String direccion;
-    protected String empresa;
-    protected int costosDePromocion;
-    protected float gananciaEsperada;
-    protected LocalDate fechaTrato;
-
+public interface Intermediarios extends Terreno, Departamentos, Casas, LocalComercial{
+    // Getters y Setters
+    String getNombre();
+    void setNombre(String nombre);
     
-    //Getters y setters
-    public String getNombre(){return nombre;}
-    public void setNombre(String nombre){this.nombre=nombre;}
+    String getTelefono();
+    void setTelefono(String telefono);
     
-    public String getTelefono(){return telefono;}
-    public void setTelefono(String telefono){this.telefono=telefono;}
+    String getDireccion();
+    void setDireccion(String direccion);
     
-    public String getDireccion(){return direccion;}
-    public void setDireccion(String direccion){this.direccion=direccion;}
+    String getEmpresa();
+    void setEmpresa(String empresa);
     
-    public String getEmpresa(){return empresa;}
-    public void setEmpresa(String empresa){this.empresa=empresa;}
+    int getCostosDePromocion();
+    void setCostosDePromocion(int costosDePromocion);
     
-    public int getCostosDePromocion(){return costosDePromocion;}
-    public void setCostosDePromocion(int costosDePromocion){this.costosDePromocion=costosDePromocion;}
+    float getGananciaEsperada();
+    void setGananciaEsperada(int gananciaEsperada);
     
-    public float getGananciaEsperada(){return gananciaEsperada;}
-    public void setGananciaEsperada(int gananciaEsperada){this.gananciaEsperada=gananciaEsperada;}
-    
-    public LocalDate getFechaTrato(){return fechaTrato;}
-    public void setFechaTrato(LocalDate fechaTrato){this.fechaTrato=fechaTrato;}
+    LocalDate getFechaTrato();
+    void setFechaTrato(LocalDate fechaTrato);
 
     //Metodo ejemplo
-    public void printIntermediarios(){
-    System.out.println("============Imprimiendo desde la clase intemediarios por invocacion============");
-    printPropiedad();
-    }
-
+    default void printIntermediarios(){
+        //Impresion de solo el nombre de la interface con fines demostrativos
+        System.out.println("Puede alcanzar la interface INTERMEDIARIOS\n");
+}
 }

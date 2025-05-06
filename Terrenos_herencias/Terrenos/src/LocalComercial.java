@@ -1,25 +1,21 @@
-public class LocalComercial extends Propiedad{
-    protected type tipo;
-    protected int ocupacionMax;
-    protected Boolean puertaCarga;
-
-    //Getters setters
-    public type getTipo(){return tipo;}
-    public void setTipo(type tipo){this.tipo=tipo;}
+public interface LocalComercial extends Propiedad {
+    // Getters y Setters
+    Tipo getTipo();
+    void setTipo(Tipo tipo);
     
-    public int getOcupacionMax(){return ocupacionMax;}
-    public void setOcupacionMax(int ocupacionMax){this.ocupacionMax=ocupacionMax;}
+    int getOcupacionMax();
+    void setOcupacionMax(int ocupacionMax);
     
-    public Boolean getPuertaCarga(){return puertaCarga;}
-    public void setPuertaCarga(Boolean puertaCarga){this.puertaCarga=puertaCarga;}
+    Boolean getPuertaCarga();
+    void setPuertaCarga(Boolean puertaCarga);
 
-     //Metodo demostracion
-    public void printComercial(){
-        System.out.println("======Imprimiendo por invocacion desde LocalComercial=========");
+    default void printComercial(){
+        System.out.println("====Imprimiendo por herencia desde LocalComercial====");
         printPropiedad();
     }
 }
 
-enum type{
-    tienda,oficina
+//Enum para tipo de propiedad
+enum Tipo {
+    tienda, oficina
 }

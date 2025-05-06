@@ -1,12 +1,6 @@
 public class App{
     public static void main(String[] args) throws Exception {
-        //Objetos
-        LocalComercial localComercialOBJ = new LocalComercial();
-        Casas casasOBJ = new Casas();
-        Departamentos departamentosOBJ = new Departamentos();
-        Terreno terrenoOBJ = new Terreno();
-        Intermediarios intermediariosOBJ = new Intermediarios();
-        Propios propiosOBJ = new Propios();
+        //Obketos
         Venta ventaOBJ = new Venta();
         Renta rentaOBJ = new Renta();
 
@@ -16,13 +10,7 @@ public class App{
         
         //Impresion desde las ultimas clases de los arboles o los hijos
         rentaOBJ.printRenta();
+        System.out.println("\n\n");
         ventaOBJ.printVenta();
-        intermediariosOBJ.printIntermediarios();
-        propiosOBJ.printPropios();
-        terrenoOBJ.printTerrenos();
-        departamentosOBJ.printDepartamentos();
-        casasOBJ.printCasas();
-        localComercialOBJ.printComercial();
-
 }
 }
