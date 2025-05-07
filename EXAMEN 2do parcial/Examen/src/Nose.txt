@@ -1,0 +1,92 @@
+# Abstracción del problema con estructura de clases y herencias
+
+Para este problema de inventario y mobiliario escolar, podemos diseñar una estructura de clases que aproveche la herencia para evitar redundancia y organizar eficientemente los elementos comunes entre los diferentes tipos de áreas.
+
+Analizando el problema, observo que hay:
+- Tres tipos de áreas (salón, área de estudio y laboratorio)
+- Varios tipos de mobiliario que se repiten entre las áreas
+
+Aquí está la estructura de clases que propongo:
+
+## Estructura de clases
+
+1. **Área** (clase abstracta base)
+   - Atributos comunes:
+     - código de inventario
+     - ubicación
+     - capacidad
+     - responsable
+   - Métodos comunes:
+     - getters/setters
+     - agregarMobiliario()
+     - eliminarMobiliario()
+     - listarInventario()
+
+2. **Salón** (hereda de Área)
+   - Atributos específicos:
+     - número de salón
+     - tipo de salón (regular, audiovisual, etc.)
+   - Relaciones:
+     - Contiene: Pizarrón, Mesa, Silla, Banca, Proyector
+
+3. **ÁreaDeEstudio** (hereda de Área)
+   - Atributos específicos:
+     - tipo de área (individual, grupal)
+     - horario de disponibilidad
+   - Relaciones:
+     - Contiene: Mesa, Silla, Pizarrón
+
+4. **Laboratorio** (hereda de Área)
+   - Atributos específicos:
+     - tipo de laboratorio (computación, ciencias, etc.)
+     - requerimientos especiales
+   - Relaciones:
+     - Contiene: Pizarrón, Mesa, Silla, EquipoDeComputo, Proyector
+
+5. **Mobiliario** (clase abstracta)
+   - Atributos comunes:
+     - código de inventario
+     - fecha de adquisición
+     - estado
+     - marca/modelo
+   - Métodos comunes:
+     - getters/setters
+     - registrarMantenimiento()
+     - cambiarEstado()
+
+6. **Pizarrón** (hereda de Mobiliario)
+   - Atributos específicos:
+     - tipo (tradicional, digital, etc.)
+     - dimensiones
+
+7. **Mesa** (hereda de Mobiliario)
+   - Atributos específicos:
+     - dimensiones
+     - material
+     - capacidad
+
+8. **Silla** (hereda de Mobiliario)
+   - Atributos específicos:
+     - material
+     - con/sin descansabrazos
+     - ajustable
+
+9. **Banca** (hereda de Mobiliario)
+   - Atributos específicos:
+     - capacidad
+     - dimensiones
+     - material
+
+10. **Proyector** (hereda de Mobiliario)
+    - Atributos específicos:
+      - resolución
+      - luminosidad
+      - conexiones disponibles
+
+11. **EquipoDeComputo** (hereda de Mobiliario)
+    - Atributos específicos:
+      - tipo (desktop, laptop)
+      - especificaciones técnicas
+      - sistema operativo
+
+Esta estructura permite manejar eficientemente el inventario escolar, aprovechando la herencia para reutilizar propiedades y comportamientos comunes, mientras que las clases específicas pueden implementar características particulares según sea necesario.

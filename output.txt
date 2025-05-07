@@ -1,10 +1,10 @@
-public Departamentos(boolean elevador, float cuotaMantenimiento){
-    this.elevador=elevador;
-    this.cuotaMantenimiento=cuotaMantenimiento;
+public Laboratorio(Type tipoLab, List<String> mobiliario){
+    this.tipoLab=tipoLab;
+    this.mobiliario=mobiliario;
 }
 
 //Getters y setters
-public boolean getElevador(){return elevador;}
-public void setElevador(boolean elevador){this.elevador=elevador;}
-public float getCuotaMantenimiento(){return cuotaMantenimiento;}
-public void setCuotaMantenimiento(float cuotaMantenimiento){this.cuotaMantenimiento=cuotaMantenimiento;}
+public Type getTipoLab(){return tipoLab;}
+public void setTipoLab(Type tipoLab){this.tipoLab=tipoLab;}
+public List<String> getMobiliario(){return mobiliario;}
+public void setMobiliario(List<String> mobiliario){this.mobiliario=mobiliario;}

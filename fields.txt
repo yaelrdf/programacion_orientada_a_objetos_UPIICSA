@@ -1,2 +1,2 @@
-protected boolean elevador;
-protected float cuotaMantenimiento;
+protected Type tipoLab;
+protected List<String> mobiliario;
