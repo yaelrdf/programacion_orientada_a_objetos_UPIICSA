@@ -1,0 +1,150 @@
+import java.util.Scanner;
+
+public class PracticaFinal {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+
+        do {
+            mostrarMenu();
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Limpiar buffer
+
+	switch (opcion) {
+		case 1:
+			HolaMundo.mostrar();
+		break;
+		case 2:
+			CapturaDatos.ejecutar();
+        break;
+		case 3:
+			CalculadoraApp.iniciar();
+        break;
+		case 4:
+			MayorDeTres.ejecutar();
+        break;
+		case 5:
+			System.out.println("Saliendo del programa. ¡Hasta la proxima brother!");
+        break;
+    default:
+        System.out.println("Opción no válida. Intente nuevamente.");
+}
+
+
+        } while (opcion != 5);
+
+        scanner.close();
+    }
+
+    public static void mostrarMenu() {
+		System.out.println("\nMENÚ PRINCIPAL");
+		System.out.println("1. Hola Mundo");
+		System.out.println("2. Capturar Datos con Scanner");
+		System.out.println("3. Calculadora");
+		System.out.println("4. Mayor de Tres Números");
+		System.out.println("5. Salir");
+	}
+
+}
+
+// Práctica 1
+class HolaMundo {
+    public static void mostrar() {
+        System.out.println("¡Hola, mundo!");
+    }
+}
+
+// Práctica 3 (corregido)
+class CapturaDatos {
+    public static void ejecutar() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite su nombre: ");
+        String nombre = scanner.nextLine();
+
+        System.out.print("Digite su boleta: ");
+        int boleta = scanner.nextInt();
+
+        System.out.print("Digite su grupo: ");
+        char grupo = scanner.next().charAt(0);
+
+        System.out.print("Digite su promedio: ");
+        float promedio = scanner.nextFloat();
+
+        System.out.println("\nDatos capturados:");
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Boleta: " + boleta);
+        System.out.println("Grupo: " + grupo);
+        System.out.println("Promedio: " + promedio);
+    }
+}
+
+// Práctica 4
+class CalculadoraApp {
+    public static void iniciar() {
+        Scanner teclado = new Scanner(System.in);
+        boolean activo = true;
+
+        while (activo) {
+            System.out.println("\nCALCULADORA");
+            System.out.println("1) Sumar");
+            System.out.println("2) Restar");
+            System.out.println("3) Multiplicar");
+            System.out.println("4) Dividir");
+            System.out.println("5) Salir");
+            System.out.print("Elige una opción: ");
+            int eleccion = teclado.nextInt();
+
+            if (eleccion == 5) {
+                System.out.println("Saliendo de la calculadora...");
+                break;
+            }
+
+            System.out.print("Número 1: ");
+            double x = teclado.nextDouble();
+            System.out.print("Número 2: ");
+            double y = teclado.nextDouble();
+
+            double resultado = 0;
+
+            switch (eleccion) {
+                case 1: resultado = x + y; break;
+                case 2: resultado = x - y; break;
+                case 3: resultado = x * y; break;
+                case 4:
+                    if (y != 0) resultado = x / y;
+                    else {
+                        System.out.println("Error: división entre cero.");
+                        continue;
+                    }
+                    break;
+                default:
+                    System.out.println("Opción inválida.");
+                    continue;
+            }
+
+            System.out.println("Resultado: " + resultado);
+        }
+    }
+}
+
+// Práctica 7
+class MayorDeTres {
+    public static void ejecutar() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nPROGRAMA: Mayor de tres números");
+
+        System.out.print("Ingrese el primer número: ");
+        int a = scanner.nextInt();
+        System.out.print("Ingrese el segundo número: ");
+        int b = scanner.nextInt();
+        System.out.print("Ingrese el tercer número: ");
+        int c = scanner.nextInt();
+
+        int mayor = Math.max(Math.max(a, b), c);
+
+        System.out.println("El mayor de los tres números es: " + mayor);
+    }
+}
