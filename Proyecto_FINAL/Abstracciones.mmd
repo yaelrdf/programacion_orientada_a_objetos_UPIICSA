@@ -1,0 +1,44 @@
+classDiagram
+
+    class Actividades{
+        +Nombre
+        +Lugar
+        +Instructor
+        +Costo
+        +Inscritos
+        +Materiales[list]
+        +Alumnos[list]
+    }
+
+    class Alumnos{
+        +No.expediente
+        +Actividades
+        +Vigente[boolean]
+        +Ultimo pago
+        +Nombre
+        +edad
+        +documentacionEntregada[boolean]
+    }
+    
+    class Instructores{
+        +actividadesAutorizadas
+        +areaAlmacenamiento
+        +NoExpediente
+        +NombreCompleto
+        +gruposAsignados
+        +documentacionEntregada[boolean]
+    }
+    
+    class Materiales{
+        +propietario
+        +actividadAsignada
+        +espacioAlmacenaje
+        +cantidad
+    }
+
+    class Personal{
+        +Usuario
+        +Contraseña
+        +nombreEmpleado
+        +nivelAcceso
+    }
