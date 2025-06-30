@@ -1,0 +1,16 @@
+# Configuración de conexión a Base de Datos MariaDB
+# Centro Cultural - Sistema de Gestión
+
+# URL de conexión
+db.url=jdbc:mariadb://localhost:3306/centro_cultural
+
+# Usuario de base de datos
+db.username=root
+
+# Contraseña de base de datos
+db.password=
+
+# Configuraciones adicionales (opcional)
+db.driver=org.mariadb.jdbc.Driver
+db.pool.size=10
+db.timeout=30000

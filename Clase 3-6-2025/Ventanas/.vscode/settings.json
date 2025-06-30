@@ -3,5 +3,11 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar"
-    ]
+    ],
+    "netbeans.jdkhome": "/usr/lib/jvm/jdk-23.0.2-oracle-x64",
+    "netbeans.project.jdkhome": "/usr/lib/jvm/jdk-23.0.2-oracle-x64",
+    "terminal.integrated.env.linux": {
+        "JAVA_HOME": "/usr/lib/jvm/jdk-23.0.2-oracle-x64",
+        "PATH": "/usr/lib/jvm/jdk-23.0.2-oracle-x64/bin:${env:PATH}"
+    }
 }

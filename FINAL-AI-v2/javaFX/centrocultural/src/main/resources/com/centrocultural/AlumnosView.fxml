@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<VBox spacing="10.0" 
+      xmlns="http://javafx.com/javafx/11.0.1" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.centrocultural.controllers.AlumnosViewController">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    
+    <!-- Encabezado -->
+    <Label text="Gestión de Alumnos" styleClass="module-title">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Label>
+    
+    <Separator />
+    
+    <!-- Barra de herramientas -->
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <Button fx:id="btnAgregar" text="➕ Agregar Alumno" 
+                styleClass="button-primary" />
+        
+        <Region HBox.hgrow="ALWAYS" />
+        
+        <TextField fx:id="txtBuscar" promptText="Buscar por nombre o expediente..." 
+                   prefWidth="300.0" />
+        <Button fx:id="btnBuscar" text="🔍 Buscar" />
+        <Button fx:id="btnLimpiar" text="✖ Limpiar" />
+    </HBox>
+    
+    <!-- Tabla de alumnos -->
+    <TableView fx:id="tablaAlumnos" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colSeleccion" text="✓" />
+            <TableColumn fx:id="colExpediente" text="No. Expediente" />
+            <TableColumn fx:id="colNombre" text="Nombre Completo" />
+            <TableColumn fx:id="colFechaNacimiento" text="Fecha Nac." />
+            <TableColumn fx:id="colActividades" text="Actividades Inscritas" />
+            <TableColumn fx:id="colDetalles" text="Acciones" />
+        </columns>
+        <placeholder>
+            <Label text="No se encontraron alumnos" />
+        </placeholder>
+    </TableView>
+    
+    <!-- Barra inferior -->
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <Button fx:id="btnGenerarReporte" text="📄 Generar Reporte PDF" 
+                disable="true" styleClass="button-secondary" />
+        <Label text="Seleccione alumnos para incluir en el reporte" 
+               styleClass="hint-text" />
+    </HBox>
+    
+    <stylesheets>
+        <URL value="@../css/style.css" />
+    </stylesheets>
+</VBox>
