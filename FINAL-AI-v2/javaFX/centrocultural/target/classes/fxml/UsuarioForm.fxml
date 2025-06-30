@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<VBox spacing="15.0" prefWidth="500.0" 
+      xmlns="http://javafx.com/javafx/11.0.1" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.centrocultural.controllers.UsuarioFormController">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    
+    <Label fx:id="lblTitulo" text="Agregar Usuario" styleClass="form-title">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+    
+    <Separator />
+    
+    <GridPane hgap="10.0" vgap="10.0">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30.0" />
+            <ColumnConstraints percentWidth="70.0" />
+        </columnConstraints>
+        
+        <Label text="Nombre de usuario:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="txtNombreUsuario" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        
+        <Label text="Contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <PasswordField fx:id="txtContrasena" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        
+        <Label text="Confirmar contraseña:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <PasswordField fx:id="txtConfirmarContrasena" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        
+        <Label text="Nombre del empleado:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="txtNombreEmpleado" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        
+        <Label text="Área asignada:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <ComboBox fx:id="cmbAreaAsignada" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    </GridPane>
+    
+    <Label fx:id="lblNotaContrasena" text="Nota: Deje los campos de contraseña vacíos para mantener la contraseña actual" 
+           visible="false" wrapText="true" styleClass="hint-text" />
+    
+    <Region VBox.vgrow="ALWAYS" />
+    
+    <HBox spacing="10.0" alignment="CENTER_RIGHT">
+        <Button text="Cancelar" onAction="#cancelar" prefWidth="100.0" />
+        <Button fx:id="btnGuardar" text="Guardar" onAction="#guardar" 
+                styleClass="button-primary" prefWidth="100.0" />
+    </HBox>
+</VBox>

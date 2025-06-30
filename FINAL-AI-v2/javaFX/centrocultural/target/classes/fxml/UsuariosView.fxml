@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<VBox spacing="10.0" 
+      xmlns="http://javafx.com/javafx/11.0.1" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.centrocultural.controllers.UsuariosViewController">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    
+    <!-- Encabezado -->
+    <Label text="Gestión de Usuarios" styleClass="module-title">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Label>
+    
+    <Separator />
+    
+    <!-- Barra de herramientas -->
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <Button fx:id="btnAgregar" text="➕ Agregar Usuario" 
+                styleClass="button-primary" />
+        
+        <Region HBox.hgrow="ALWAYS" />
+        
+        <TextField fx:id="txtBuscar" promptText="Buscar por nombre o usuario..." 
+                   prefWidth="300.0" />
+        <Button fx:id="btnBuscar" text="🔍 Buscar" />
+        <Button fx:id="btnLimpiar" text="✖ Limpiar" />
+    </HBox>
+    
+    <!-- Tabla de usuarios -->
+    <TableView fx:id="tablaUsuarios" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colSeleccion" text="✓" />
+            <TableColumn fx:id="colId" text="ID" />
+            <TableColumn fx:id="colUsuario" text="Usuario" />
+            <TableColumn fx:id="colNombre" text="Nombre Empleado" />
+            <TableColumn fx:id="colArea" text="Área Asignada" />
+            <TableColumn fx:id="colFechaCreacion" text="Fecha Creación" />
+            <TableColumn fx:id="colAcciones" text="Acciones" />
+        </columns>
+        <placeholder>
+            <Label text="No se encontraron usuarios" />
+        </placeholder>
+    </TableView>
+    
+    <!-- Barra inferior -->
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <Button fx:id="btnGenerarReporte" text="📄 Generar Reporte PDF" 
+                disable="true" styleClass="button-secondary" />
+        <Label text="Seleccione usuarios para incluir en el reporte" 
+               styleClass="hint-text" />
+    </HBox>
+</VBox>

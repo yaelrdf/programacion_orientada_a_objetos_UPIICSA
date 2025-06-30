@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<VBox spacing="15.0" prefWidth="700.0" prefHeight="500.0"
+      xmlns="http://javafx.com/javafx/11.0.1" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.centrocultural.controllers.AlumnoDetallesController">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    
+    <Label text="Detalles del Alumno" styleClass="form-title">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+    
+    <Separator />
+    
+    <!-- Información básica -->
+    <GridPane hgap="10.0" vgap="10.0">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="20.0" />
+            <ColumnConstraints percentWidth="30.0" />
+            <ColumnConstraints percentWidth="20.0" />
+            <ColumnConstraints percentWidth="30.0" />
+        </columnConstraints>
+        
+        <Label text="No. Expediente:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Label fx:id="lblExpediente" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        
+        <Label text="Fecha de registro:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <Label fx:id="lblFechaRegistro" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+        
+        <Label text="Nombre completo:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Label fx:id="lblNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.columnSpan="3" />
+        
+        <Label text="Fecha de nacimiento:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Label fx:id="lblFechaNacimiento" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        
+        <Label text="Edad:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Label fx:id="lblEdad" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+    </GridPane>
+    
+    <!-- Inscripciones -->
+    <Label text="Inscripciones" styleClass="section-header">
+        <font>
+            <Font size="16.0" />
+        </font>
+    </Label>
+    
+    <TableView fx:id="tablaInscripciones" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colActividad" text="Actividad" prefWidth="200.0" />
+            <TableColumn fx:id="colGrupo" text="Grupo" prefWidth="150.0" />
+            <TableColumn fx:id="colFechaInscripcion" text="Fecha Inscripción" prefWidth="120.0" />
+            <TableColumn fx:id="colEstadoPago" text="Estado Pago" prefWidth="100.0" />
+            <TableColumn fx:id="colEstado" text="Estado" prefWidth="80.0" />
+        </columns>
+        <placeholder>
+            <Label text="No hay inscripciones registradas" />
+        </placeholder>
+    </TableView>
+    
+    <!-- Botones de acción -->
+    <HBox spacing="10.0" alignment="CENTER_RIGHT">
+        <Button text="Editar" onAction="#editar" styleClass="button-secondary" />
+        <Button text="Eliminar" onAction="#eliminar" styleClass="button-danger" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button text="Cerrar" onAction="#cerrar" prefWidth="100.0" />
+    </HBox>
+</VBox>

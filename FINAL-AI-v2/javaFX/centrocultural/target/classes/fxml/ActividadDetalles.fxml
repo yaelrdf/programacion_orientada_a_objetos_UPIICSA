@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<VBox spacing="15.0" prefWidth="500.0" 
+      xmlns="http://javafx.com/javafx/11.0.1" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.centrocultural.controllers.ActividadDetallesController">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    
+    <Label fx:id="lblTitulo" text="Detalles de Actividad" styleClass="form-title">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+    
+    <Separator />
+    
+    <GridPane hgap="10.0" vgap="10.0">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30.0" />
+            <ColumnConstraints percentWidth="70.0" />
+        </columnConstraints>
+        
+        <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Label fx:id="lblId" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        
+        <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Label fx:id="lblNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        
+        <Label text="Clasificación:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Label fx:id="lblClasificacion" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        
+        <Label text="Área asignada:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Label fx:id="lblAreaAsignada" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        
+        <Label text="Estado:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <Label fx:id="lblEstado" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        
+        <Label text="Instructores autorizados:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <ListView fx:id="listInstructores" GridPane.columnIndex="1" GridPane.rowIndex="5" 
+                  prefHeight="100.0" />
+        
+        <Label text="Grupos:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+        <ListView fx:id="listGrupos" GridPane.columnIndex="1" GridPane.rowIndex="6" 
+                  prefHeight="100.0" />
+    </GridPane>
+    
+    <HBox spacing="10.0" alignment="CENTER_RIGHT">
+        <Button fx:id="btnEliminar" text="Eliminar" styleClass="button-danger" />
+        <Button text="Cerrar" onAction="#cerrar" />
+    </HBox>
+</VBox>

@@ -35,7 +35,7 @@ public class Actividad {
     public Actividad(String nombre, String clasificacion, String areaAsignada) {
         this.nombre = nombre;
         this.clasificacion = clasificacion;
-        this.areaAsignada = areaAsignada;
+        this.areaAsignada = areaAsignada; // Ahora es string libre
         this.activa = true;
         this.instructoresAutorizados = new ArrayList<>();
         this.grupos = new ArrayList<>();
