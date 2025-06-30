@@ -34,21 +34,21 @@ public class DatabaseConnection {
             InputStream input = getClass().getClassLoader().getResourceAsStream("database.properties");
             if (input == null) {
                 // Si no existe el archivo, usar valores por defecto
-                this.url = "jdbc:mariadb://localhost:3306/centro_cultural";
+                this.url = "jdbc:mariadb://25.12.11.40:3307/centro_cultural";
                 this.username = "root";
-                this.password = "";
+                this.password = "mariadb";
             } else {
                 props.load(input);
-                this.url = props.getProperty("db.url", "jdbc:mariadb://localhost:3306/centro_cultural");
+                this.url = props.getProperty("db.url", "jdbc:mariadb://25.12.11.40:3307/centro_cultural");
                 this.username = props.getProperty("db.username", "root");
-                this.password = props.getProperty("db.password", "");
+                this.password = props.getProperty("db.password", "mariadb");
                 input.close();
             }
         } catch (IOException e) {
             // En caso de error, usar valores por defecto
-            this.url = "jdbc:mariadb://localhost:3306/centro_cultural";
+            this.url = "jdbc:mariadb://25.12.11.40:3307/centro_cultural";
             this.username = "root";
-            this.password = "";
+            this.password = "mariadb";
             System.err.println("Error cargando configuración de BD: " + e.getMessage());
         }
     }

@@ -8,6 +8,13 @@
             "type": "java",
             "name": "MainApp",
             "request": "launch",
+            "mainClass": "com.centrocultural/com.centrocultural.MainApp",
+            "projectName": "centro-cultural-sistema"
+        },
+        {
+            "type": "java",
+            "name": "MainApp",
+            "request": "launch",
             "mainClass": "com.centrocultural.MainApp",
             "projectName": "centrocultural"
         },
