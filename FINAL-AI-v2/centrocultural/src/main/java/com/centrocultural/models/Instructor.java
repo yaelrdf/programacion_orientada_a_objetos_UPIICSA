@@ -1,4 +1,4 @@
-//public package com.centrocultural.models;
+public package com.centrocultural.models;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-//package com.centrocultural.database;
+package com.centrocultural.database;
 
 import java.sql.*;
 import java.util.Properties;

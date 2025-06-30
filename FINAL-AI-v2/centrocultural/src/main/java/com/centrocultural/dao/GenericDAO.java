@@ -1,4 +1,4 @@
-//package com.centrocultural.dao;
+package com.centrocultural.dao;
 
 import java.sql.SQLException;
 import java.util.List;

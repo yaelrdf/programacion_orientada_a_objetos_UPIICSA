@@ -1,4 +1,4 @@
-//package com.centrocultural.models;
+package com.centrocultural.models;
 
 import java.util.ArrayList;
 import java.util.List;

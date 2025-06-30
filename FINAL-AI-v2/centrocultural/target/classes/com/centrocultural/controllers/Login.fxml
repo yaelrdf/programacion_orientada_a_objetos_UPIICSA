@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<VBox fx:id="loginBox" alignment="CENTER" spacing="20.0" 
+      styleClass="login-container" 
+      xmlns="http://javafx.com/javafx/11.0.1" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.centrocultural.controllers.LoginController"
+      prefWidth="400.0" prefHeight="500.0">
+    
+    <padding>
+        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+    </padding>
+    
+    <VBox alignment="CENTER" spacing="10.0">
+        <Label text="Centro Cultural" styleClass="login-title">
+            <font>
+                <Font size="32.0" />
+            </font>
+        </Label>
+        
+        <Label text="Sistema de Gestión" styleClass="login-subtitle">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+    </VBox>
+    
+    <VBox spacing="15.0" maxWidth="300.0">
+        <VBox spacing="5.0">
+            <Label text="Usuario:" />
+            <TextField fx:id="txtUsuario" promptText="Ingrese su usuario" />
+        </VBox>
+        
+        <VBox spacing="5.0">
+            <Label text="Contraseña:" />
+            <PasswordField fx:id="txtContrasena" promptText="Ingrese su contraseña" />
+        </VBox>
+        
+        <Label fx:id="lblError" textFill="RED" wrapText="true" visible="false">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+        
+        <Button fx:id="btnIngresar" text="Ingresar" 
+                prefWidth="300.0" prefHeight="40.0"
+                styleClass="button-primary">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+    </VBox>
+    
+    <stylesheets>
+        <URL value="@../css/style.css" />
+    </stylesheets>
+</VBox>
