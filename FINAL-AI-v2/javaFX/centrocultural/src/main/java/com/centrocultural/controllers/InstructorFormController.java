@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.centrocultural.dao.ActividadDAO;
@@ -13,10 +14,13 @@ import com.centrocultural.models.Instructor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -87,17 +91,47 @@ public class InstructorFormController implements Initializable, BaseController {
     }
     
     private void agregarActividad() {
-        // Implementar lógica para seleccionar actividad a agregar
-        // Puede ser un diálogo de selección o una ventana modal
-        PantallaPrincipalController.abrirVentanaModal(
-            "Seleccionar Actividad",
-            "/fxml/SeleccionarActividadDialog.fxml",
-            todasLasActividades
-        );
-        
-        // Aquí deberías obtener la actividad seleccionada y agregarla
-        // actividadesAsignadas.add(actividadSeleccionada);
+    try {
+        // Filtrar actividades que no están ya asignadas
+        ObservableList<Actividad> disponibles = FXCollections.observableArrayList();
+        for (Actividad a : todasLasActividades) {
+            if (!actividadesAsignadas.contains(a)) {
+                disponibles.add(a);
+            }
+        }
+
+        // Crear y configurar el diálogo
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Seleccionar Actividad");
+        dialog.setHeaderText("Seleccione una actividad para autorizar");
+
+        // Cargar el FXML
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/SeleccionarActividadDialog.fxml"));
+        dialog.getDialogPane().setContent(loader.load());
+
+        // Obtener el controlador y configurarlo
+        SeleccionarActividadDialogController controller = loader.getController();
+        controller.setActividadesDisponibles(disponibles);
+
+        // Agregar botones
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        // Mostrar diálogo y procesar resultado
+        Optional<ButtonType> result = dialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Actividad seleccionada = controller.getActividadSeleccionada();
+            if (seleccionada != null) {
+                actividadesAsignadas.add(seleccionada);
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        mostrarAlerta("Error", "Error al cargar actividades", 
+                    "No se pudo cargar el diálogo de selección: " + e.getMessage(), 
+                    Alert.AlertType.ERROR);
     }
+}
     
     private void removerActividad() {
         Actividad seleccionada = lstActividades.getSelectionModel().getSelectedItem();
@@ -112,53 +146,70 @@ public class InstructorFormController implements Initializable, BaseController {
     
     @FXML
     private void guardar() {
-        if (!validarFormulario()) {
-            return;
-        }
-        
-        try {
-            String nombreCompleto = txtNombreCompleto.getText().trim();
-            LocalDate fechaNacimiento = dpFechaNacimiento.getValue();
-            
-            if (instructorEditar == null) {
-                // Crear nuevo instructor
-                Instructor nuevoInstructor = new Instructor(
-                    nombreCompleto,
-                    fechaNacimiento
-                );
-                
-                // Asignar actividades
-                nuevoInstructor.setActividadesAutorizadas(actividadesAsignadas);
-                
-                int id = instructorDAO.crear(nuevoInstructor);
-                if (id > 0) {
-                    mostrarAlerta("Éxito", "Instructor creado", 
-                                "El instructor ha sido registrado exitosamente", 
-                                Alert.AlertType.INFORMATION);
-                    cerrarVentana();
-                }
-            } else {
-                // Actualizar instructor existente
-                instructorEditar.setNombreCompleto(nombreCompleto);
-                instructorEditar.setFechaNacimiento(fechaNacimiento);
-                instructorEditar.setActividadesAutorizadas(actividadesAsignadas);
-                
-                if (instructorDAO.actualizar(instructorEditar)) {
-                    mostrarAlerta("Éxito", "Instructor actualizado", 
-                                "Los datos del instructor han sido actualizados", 
-                                Alert.AlertType.INFORMATION);
-                    cerrarVentana();
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            mostrarAlerta("Error", "Error al guardar", 
-                        "No se pudo guardar el instructor: " + e.getMessage(), 
-                        Alert.AlertType.ERROR);
-        }
+    if (!validarFormulario()) {
+        return;
     }
     
-    // ... (resto de los métodos permanece igual)
+    try {
+        String nombreCompleto = txtNombreCompleto.getText().trim();
+        LocalDate fechaNacimiento = dpFechaNacimiento.getValue();
+        
+        if (instructorEditar == null) {
+            // Crear nuevo instructor
+            Instructor nuevoInstructor = new Instructor(
+                nombreCompleto,
+                fechaNacimiento
+            );
+            
+            int id = instructorDAO.crear(nuevoInstructor);
+            if (id > 0) {
+                // Guardar actividades autorizadas
+                for (Actividad actividad : actividadesAsignadas) {
+                    instructorDAO.autorizarActividad(id, actividad.getIdActividad());
+                }
+                
+                mostrarAlerta("Éxito", "Instructor creado", 
+                            "El instructor ha sido registrado exitosamente", 
+                            Alert.AlertType.INFORMATION);
+                cerrarVentana();
+            }
+        } else {
+            // Actualizar instructor existente
+            instructorEditar.setNombreCompleto(nombreCompleto);
+            instructorEditar.setFechaNacimiento(fechaNacimiento);
+            
+            if (instructorDAO.actualizar(instructorEditar)) {
+                // Sincronizar actividades autorizadas
+                List<Actividad> actividadesActuales = instructorEditar.getActividadesAutorizadas();
+                
+                // Agregar nuevas autorizaciones
+                for (Actividad nueva : actividadesAsignadas) {
+                    if (!actividadesActuales.contains(nueva)) {
+                        instructorDAO.autorizarActividad(instructorEditar.getNoExpediente(), nueva.getIdActividad());
+                    }
+                }
+                
+                // Eliminar autorizaciones removidas
+                for (Actividad existente : actividadesActuales) {
+                    if (!actividadesAsignadas.contains(existente)) {
+                        instructorDAO.desautorizarActividad(instructorEditar.getNoExpediente(), existente.getIdActividad());
+                    }
+                }
+                
+                mostrarAlerta("Éxito", "Instructor actualizado", 
+                            "Los datos del instructor han sido actualizados", 
+                            Alert.AlertType.INFORMATION);
+                cerrarVentana();
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        mostrarAlerta("Error", "Error al guardar", 
+                    "No se pudo guardar el instructor: " + e.getMessage(), 
+                    Alert.AlertType.ERROR);
+    }
+}
+    
     
     private boolean validarFormulario() {
         String nombreCompleto = txtNombreCompleto.getText().trim();

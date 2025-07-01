@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<VBox spacing="15.0" prefWidth="700.0" prefHeight="500.0"
+      xmlns="http://javafx.com/javafx/11.0.1" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.centrocultural.controllers.GrupoDetallesController">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    
+    <Label text="Detalles del Grupo" styleClass="form-title">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+    
+    <Separator />
+    
+    <!-- Información básica -->
+    <GridPane hgap="10.0" vgap="10.0">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30.0" />
+            <ColumnConstraints percentWidth="70.0" />
+        </columnConstraints>
+        
+        <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Label fx:id="lblId" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        
+        <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Label fx:id="lblNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        
+        <Label text="Actividad:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Label fx:id="lblActividad" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        
+        <Label text="Instructor:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Label fx:id="lblInstructor" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        
+        <Label text="Horario:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <Label fx:id="lblHorario" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        
+        <Label text="Ubicación:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <Label fx:id="lblUbicacion" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    </GridPane>
+    
+    <!-- Alumnos inscritos -->
+    <Label text="Alumnos Inscritos" styleClass="section-header">
+        <font>
+            <Font size="16.0" />
+        </font>
+    </Label>
+    
+    <TableView fx:id="tablaAlumnos" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colExpediente" text="Expediente" prefWidth="100.0" />
+            <TableColumn fx:id="colNombreAlumno" text="Nombre" prefWidth="250.0" />
+            <TableColumn fx:id="colFechaInscripcion" text="Fecha Inscripción" prefWidth="120.0" />
+            <TableColumn fx:id="colAccionesAlumno" text="Acciones" prefWidth="120.0" />
+        </columns>
+        <placeholder>
+            <Label text="No hay alumnos inscritos" />
+        </placeholder>
+    </TableView>
+    
+    <!-- Botones de acción -->
+    <HBox spacing="10.0" alignment="CENTER_RIGHT">
+        <Button text="Editar" onAction="#editar" styleClass="button-secondary" />
+        <Button text="Eliminar" onAction="#eliminar" styleClass="button-danger" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button text="Cerrar" onAction="#cerrar" prefWidth="100.0" />
+    </HBox>
+</VBox>

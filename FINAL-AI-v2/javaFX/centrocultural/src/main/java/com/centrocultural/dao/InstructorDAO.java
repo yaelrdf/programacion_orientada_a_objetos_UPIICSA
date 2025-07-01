@@ -246,4 +246,9 @@ public class InstructorDAO implements GenericDAO<Instructor> {
         
         return documentos;
     }
+
+    public List<Instructor> listarActivos() throws SQLException {
+    // Implementa este método si necesitas filtrar instructores activos
+    return listarTodos(); // Por ahora usamos todos los instructores
+    }
 }

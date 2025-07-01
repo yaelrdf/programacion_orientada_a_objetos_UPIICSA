@@ -20,7 +20,7 @@ public class MaterialesFormController implements Initializable, BaseController {
     
     @FXML private Label lblTitulo;
     @FXML private TextField txtNombre;
-    @FXML private ComboBox<String> cmbAreaAlmacenamiento;
+    @FXML private TextField txtAreaAlmacenamiento;
     @FXML private ComboBox<String> cmbCondicion;
     @FXML private CheckBox chkDisponible;
     @FXML private Button btnGuardar;
@@ -30,19 +30,7 @@ public class MaterialesFormController implements Initializable, BaseController {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        configurarComboBoxes();
-    }
-    
-    private void configurarComboBoxes() {
-        // Áreas de almacenamiento basadas en las áreas de grupos
-        cmbAreaAlmacenamiento.getItems().addAll(
-            "deportiva",
-            "cultural",
-            "oficios",
-            "almacen_general"
-        );
-        
-        // Condiciones posibles para los materiales
+        // Configurar solo el ComboBox de condición
         cmbCondicion.getItems().addAll(
             "bueno",
             "regular",
@@ -61,7 +49,7 @@ public class MaterialesFormController implements Initializable, BaseController {
     private void cargarDatosMaterial() {
         lblTitulo.setText("Editar Material");
         txtNombre.setText(materialEditar.getNombre());
-        cmbAreaAlmacenamiento.setValue(materialEditar.getAreaAlmacenamiento());
+        txtAreaAlmacenamiento.setText(materialEditar.getAreaAlmacenamiento());
         cmbCondicion.setValue(materialEditar.getCondicion());
         chkDisponible.setSelected(materialEditar.isDisponible());
     }
@@ -74,7 +62,7 @@ public class MaterialesFormController implements Initializable, BaseController {
         
         try {
             String nombre = txtNombre.getText().trim();
-            String areaAlmacenamiento = cmbAreaAlmacenamiento.getValue();
+            String areaAlmacenamiento = txtAreaAlmacenamiento.getText().trim();
             String condicion = cmbCondicion.getValue();
             boolean disponible = chkDisponible.isSelected();
             
@@ -118,7 +106,7 @@ public class MaterialesFormController implements Initializable, BaseController {
     
     private boolean validarFormulario() {
         String nombre = txtNombre.getText().trim();
-        String areaAlmacenamiento = cmbAreaAlmacenamiento.getValue();
+        String areaAlmacenamiento = txtAreaAlmacenamiento.getText().trim();
         String condicion = cmbCondicion.getValue();
         
         if (nombre.isEmpty()) {
@@ -128,9 +116,9 @@ public class MaterialesFormController implements Initializable, BaseController {
             return false;
         }
         
-        if (areaAlmacenamiento == null) {
+        if (areaAlmacenamiento.isEmpty()) {
             mostrarAlerta("Validación", "Campo requerido", 
-                         "Debe seleccionar un área de almacenamiento", 
+                         "El área de almacenamiento es obligatoria", 
                          Alert.AlertType.WARNING);
             return false;
         }

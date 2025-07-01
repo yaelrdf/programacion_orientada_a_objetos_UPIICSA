@@ -32,7 +32,7 @@
         <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
         
         <Label text="Área de Almacenamiento:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <ComboBox fx:id="cmbAreaAlmacenamiento" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField fx:id="txtAreaAlmacenamiento" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         
         <Label text="Condición:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
         <ComboBox fx:id="cmbCondicion" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />

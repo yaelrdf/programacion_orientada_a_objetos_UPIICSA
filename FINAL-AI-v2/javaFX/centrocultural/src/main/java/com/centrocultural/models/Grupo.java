@@ -23,29 +23,24 @@ public class Grupo {
     }
 
     // Constructor completo
+    // Modificar constructores para eliminar salon y edificio
     public Grupo(int idGrupo, Actividad actividad, Instructor instructor, 
-                 String nombreGrupo, String salon, String edificio, 
-                 String horario, boolean activo) {
+                String nombreGrupo, String horario, boolean activo) {
         this.idGrupo = idGrupo;
         this.actividad = actividad;
         this.instructor = instructor;
         this.nombreGrupo = nombreGrupo;
-        this.salon = salon;
-        this.edificio = edificio;
         this.horario = horario;
         this.activo = activo;
         this.materiales = new ArrayList<>();
         this.inscripciones = new ArrayList<>();
     }
 
-    // Constructor sin ID (para nuevos grupos)
     public Grupo(Actividad actividad, Instructor instructor, String nombreGrupo, 
-                 String salon, String edificio, String horario) {
+                String horario) {
         this.actividad = actividad;
         this.instructor = instructor;
         this.nombreGrupo = nombreGrupo;
-        this.salon = salon;
-        this.edificio = edificio;
         this.horario = horario;
         this.activo = true;
         this.materiales = new ArrayList<>();
@@ -157,7 +152,7 @@ public class Grupo {
     }
 
     public String getUbicacion() {
-        return edificio + " - " + salon;
+    return actividad != null ? actividad.getAreaAsignada() : "No asignada";
     }
 
     @Override

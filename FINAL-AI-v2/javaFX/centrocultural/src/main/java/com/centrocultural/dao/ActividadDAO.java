@@ -94,16 +94,16 @@ public class ActividadDAO implements GenericDAO<Actividad> {
     
     // Listar solo actividades activas
     public List<Actividad> listarActivas() throws SQLException {
-        List<Actividad> actividades = new ArrayList<>();
-        String query = "SELECT * FROM actividades WHERE activa = TRUE ORDER BY nombre";
-        ResultSet rs = db.executeQuery(query);
-        
-        while (rs.next()) {
-            actividades.add(extraerActividad(rs));
-        }
-        
-        return actividades;
+    List<Actividad> actividades = new ArrayList<>();
+    String query = "SELECT * FROM actividades WHERE activa = TRUE ORDER BY nombre";
+    ResultSet rs = db.executeQuery(query);
+    
+    while (rs.next()) {
+        actividades.add(extraerActividad(rs));
     }
+    
+    return actividades;
+}
     
     // Listar actividades por clasificación
     public List<Actividad> listarPorClasificacion(String clasificacion) throws SQLException {
@@ -180,4 +180,6 @@ public class ActividadDAO implements GenericDAO<Actividad> {
         
         return grupos;
     }
+
+    
 }

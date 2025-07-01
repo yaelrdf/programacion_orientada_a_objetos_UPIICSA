@@ -130,4 +130,7 @@ public class Alumno {
                 ", inscripcionesActivas=" + getInscripcionesActivas().size() +
                 '}';
     }
+
+
 }
+

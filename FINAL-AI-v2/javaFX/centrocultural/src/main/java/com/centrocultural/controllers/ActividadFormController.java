@@ -16,14 +16,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
 public class ActividadFormController implements Initializable, BaseController {
     
     @FXML private TextField txtAreaAsignada;
     @FXML private Label lblTitulo;
     @FXML private TextField txtNombre;
     @FXML private ComboBox<String> cmbClasificacion;
-    @FXML private ComboBox<String> cmbAreaAsignada;
     @FXML private CheckBox chkActiva;
     @FXML private Button btnGuardar;
     
@@ -32,26 +30,11 @@ public class ActividadFormController implements Initializable, BaseController {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Solo configuramos el ComboBox de clasificación ahora
-        cmbClasificacion.getItems().addAll(
-            "deportiva",
-            "cultural",
-            "oficio"
-        );
-    }
-    
-    private void configurarComboBoxes() {
         // Configurar opciones de clasificación
         cmbClasificacion.getItems().addAll(
             "deportiva",
             "cultural",
             "oficio"
-        );
-        
-        // Configurar opciones de área asignada
-        cmbAreaAsignada.getItems().addAll(
-            "administracion",
-            "contabilidad"
         );
     }
     
@@ -67,11 +50,11 @@ public class ActividadFormController implements Initializable, BaseController {
         lblTitulo.setText("Editar Actividad");
         txtNombre.setText(actividadEditar.getNombre());
         cmbClasificacion.setValue(actividadEditar.getClasificacion());
-        txtAreaAsignada.setText(actividadEditar.getAreaAsignada()); // Ahora es TextField
+        txtAreaAsignada.setText(actividadEditar.getAreaAsignada());
         chkActiva.setSelected(actividadEditar.isActiva());
     }
     
-     @FXML
+    @FXML
     private void guardar() {
         if (!validarFormulario()) {
             return;
@@ -80,19 +63,38 @@ public class ActividadFormController implements Initializable, BaseController {
         try {
             String nombre = txtNombre.getText().trim();
             String clasificacion = cmbClasificacion.getValue();
-            String areaAsignada = txtAreaAsignada.getText().trim(); // Ahora es TextField
+            String areaAsignada = txtAreaAsignada.getText().trim();
             boolean activa = chkActiva.isSelected();
             
-            // ... (resto del método igual)
-        } finally{
-            // ... (manejo de errores igual)
+            if (actividadEditar == null) {
+                // Crear nueva actividad
+                Actividad nuevaActividad = new Actividad(nombre, clasificacion, areaAsignada);
+                nuevaActividad.setActiva(activa);
+                actividadDAO.crear(nuevaActividad);
+                mostrarAlerta("Éxito", "Actividad creada", "La actividad se ha creado correctamente", Alert.AlertType.INFORMATION);
+            } else {
+                // Actualizar actividad existente
+                actividadEditar.setNombre(nombre);
+                actividadEditar.setClasificacion(clasificacion);
+                actividadEditar.setAreaAsignada(areaAsignada);
+                actividadEditar.setActiva(activa);
+                actividadDAO.actualizar(actividadEditar);
+                mostrarAlerta("Éxito", "Actividad actualizada", "La actividad se ha actualizado correctamente", Alert.AlertType.INFORMATION);
+            }
+            
+            cerrarVentana();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            mostrarAlerta("Error", "Error en la base de datos", 
+                         "Ocurrió un error al guardar la actividad: " + e.getMessage(), 
+                         Alert.AlertType.ERROR);
         }
     }
 
     private boolean validarFormulario() {
         String nombre = txtNombre.getText().trim();
         String clasificacion = cmbClasificacion.getValue();
-        String areaAsignada = txtAreaAsignada.getText().trim(); // Ahora es TextField
+        String areaAsignada = txtAreaAsignada.getText().trim();
         
         if (nombre.isEmpty()) {
             mostrarAlerta("Validación", "Campo requerido", 
@@ -108,7 +110,7 @@ public class ActividadFormController implements Initializable, BaseController {
             return false;
         }
         
-        if (areaAsignada.isEmpty()) { // Validamos que no esté vacío
+        if (areaAsignada.isEmpty()) {
             mostrarAlerta("Validación", "Campo requerido", 
                          "Debe especificar un área asignada", 
                          Alert.AlertType.WARNING);

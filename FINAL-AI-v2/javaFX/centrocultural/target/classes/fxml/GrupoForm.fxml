@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<VBox spacing="15.0" prefWidth="400.0" 
+      xmlns="http://javafx.com/javafx/11.0.1" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.centrocultural.controllers.GrupoFormController">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    
+    <Label fx:id="lblTitulo" text="Agregar Grupo" styleClass="form-title">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Label>
+    
+    <Separator />
+    
+    <GridPane hgap="10.0" vgap="10.0">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30.0" />
+            <ColumnConstraints percentWidth="70.0" />
+        </columnConstraints>
+        
+        <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        
+        <Label text="Actividad:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <ComboBox fx:id="cbActividades" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="300"/>
+        
+        <Label text="Instructor:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <ComboBox fx:id="cbInstructores" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="300"/>
+        
+        <Label text="Horario:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="txtHorario" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    </GridPane>
+    
+    <Region VBox.vgrow="ALWAYS" />
+    
+    <HBox spacing="10.0" alignment="CENTER_RIGHT">
+        <Button text="Cancelar" onAction="#cancelar" prefWidth="100.0" />
+        <Button text="Guardar" onAction="#guardar" styleClass="button-primary" prefWidth="100.0" />
+    </HBox>
+</VBox>

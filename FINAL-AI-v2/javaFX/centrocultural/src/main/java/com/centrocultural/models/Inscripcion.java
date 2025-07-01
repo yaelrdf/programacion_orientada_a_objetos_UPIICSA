@@ -11,31 +11,35 @@ public class Inscripcion {
     private LocalDate fechaInscripcion;
     private boolean activa;
     private List<Pago> pagos;
+    private LocalDate fechaVencimiento;
 
     // Constructor vacío
     public Inscripcion() {
         this.activa = true;
         this.pagos = new ArrayList<>();
+        this.fechaVencimiento = LocalDate.now().plusMonths(1); // 1 mes por defecto
     }
+    
 
     // Constructor completo
-    public Inscripcion(int idInscripcion, Alumno alumno, Grupo grupo, 
-                      LocalDate fechaInscripcion, boolean activa) {
+    public Inscripcion(int idInscripcion, Alumno alumno, Grupo grupo, LocalDate fechaInscripcion, LocalDate fechaVencimiento, boolean activa) {
         this.idInscripcion = idInscripcion;
         this.alumno = alumno;
         this.grupo = grupo;
         this.fechaInscripcion = fechaInscripcion;
         this.activa = activa;
+        this.fechaVencimiento = fechaVencimiento;
         this.pagos = new ArrayList<>();
     }
 
     // Constructor sin ID (para nuevas inscripciones)
-    public Inscripcion(Alumno alumno, Grupo grupo, LocalDate fechaInscripcion) {
+     public Inscripcion(Alumno alumno, Grupo grupo, LocalDate fechaInscripcion, LocalDate fechaVencimiento) {
         this.alumno = alumno;
         this.grupo = grupo;
         this.fechaInscripcion = fechaInscripcion;
         this.activa = true;
         this.pagos = new ArrayList<>();
+        this.fechaVencimiento = fechaVencimiento;
     }
 
     // Getters y Setters
@@ -92,9 +96,6 @@ public class Inscripcion {
         pagos.add(pago);
     }
 
-    public boolean isPagada() {
-        return !pagos.isEmpty();
-    }
 
     public double getTotalPagado() {
         double total = 0;
@@ -122,4 +123,18 @@ public class Inscripcion {
                 ", pagada=" + isPagada() +
                 '}';
     }
+
+    public LocalDate getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(LocalDate fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+    // Modificar isPagada para usar el checkbox
+    public boolean isPagada() {
+        return !pagos.isEmpty(); // O puedes cambiar esto según tu lógica
+    }
+    
 }

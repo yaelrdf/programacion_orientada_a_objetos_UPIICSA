@@ -33,6 +33,7 @@ public class PantallaPrincipalController implements Initializable {
     @FXML private Button btnInstructores;
     @FXML private Button btnActividades;
     @FXML private Button btnMateriales;
+    @FXML private Button btnGrupos;
     
     @FXML private StackPane contentArea;
     
@@ -86,6 +87,7 @@ public class PantallaPrincipalController implements Initializable {
         btnInstructores.setOnAction(e -> cargarModulo("Instructores"));
         btnActividades.setOnAction(e -> cargarModulo("Actividades"));
         btnMateriales.setOnAction(e -> cargarModulo("Materiales"));
+        btnGrupos.setOnAction(e -> cargarModulo("Grupos"));
     }
     
     private void cargarModulo(String modulo) {
@@ -135,6 +137,9 @@ public class PantallaPrincipalController implements Initializable {
             case "Materiales":
                 btnMateriales.getStyleClass().add("menu-button-selected");
                 break;
+            case "Grupos":
+                btnGrupos.getStyleClass().add("menu-button-selected");
+                break;
         }
     }
     
@@ -158,33 +163,26 @@ public class PantallaPrincipalController implements Initializable {
     }
     
     // Método para abrir ventanas modales (usado por los módulos)
-    public static void abrirVentanaModal(String titulo, String fxmlFile, Object controllerData) {
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                PantallaPrincipalController.class.getResource(fxmlFile)
-            );
-            Parent root = loader.load();
-            
-            // Si hay datos para pasar al controlador
-            if (controllerData != null && loader.getController() instanceof BaseController) {
-                BaseController controller = loader.getController();
-                controller.setData(controllerData);
-            }
-            
-            Stage stage = new Stage();
-            stage.setTitle(titulo);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(MainApp.getInstance().getPrimaryStage());
-            stage.setScene(new Scene(root));
-            stage.setResizable(false);
-            stage.showAndWait();
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-            MainApp.mostrarAlerta("Error", 
-                                "No se pudo abrir la ventana", 
-                                "Error: " + e.getMessage(), 
-                                Alert.AlertType.ERROR);
+    public static boolean abrirVentanaModal(String titulo, String fxmlPath, Object data) {
+    try {
+        FXMLLoader loader = new FXMLLoader(PantallaPrincipalController.class.getResource(fxmlPath));
+        Parent root = loader.load();
+        
+        BaseController controller = loader.getController();
+        if (data != null) {
+            controller.setData(data);
         }
+        
+        Stage stage = new Stage();
+        stage.setTitle(titulo);
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+        
+        return stage.getUserData() != null && (boolean) stage.getUserData();
+    } catch (IOException e) {
+        e.printStackTrace();
+        return false;
     }
+}
 }

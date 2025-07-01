@@ -75,6 +75,9 @@
             <Button fx:id="btnActividades" text="Actividades" 
                     prefWidth="180.0" styleClass="menu-button" />
             
+            <Button fx:id="btnGrupos" text="Grupos" 
+                    prefWidth="180.0" styleClass="menu-button" />
+
             <Button fx:id="btnMateriales" text="Materiales" 
                     prefWidth="180.0" styleClass="menu-button" />
         </VBox>

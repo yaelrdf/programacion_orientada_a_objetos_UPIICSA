@@ -106,22 +106,22 @@ public class MaterialesViewController implements Initializable, BaseController {
         );
         
         colDetalles.setCellFactory(col -> new TableCell<Material, Button>() {
-            @Override
-            protected void updateItem(Button item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    Button btnDetalles = new Button("Detalles");
-                    btnDetalles.getStyleClass().add("button-detalles");
-                    btnDetalles.setOnAction(e -> {
-                        Material material = getTableView().getItems().get(getIndex());
-                        mostrarDetalles(material);
-                    });
-                    setGraphic(btnDetalles);
-                }
-            }
-        });
+    @Override
+    protected void updateItem(Button item, boolean empty) {
+        super.updateItem(item, empty);
+        if (empty) {
+            setGraphic(null);
+        } else {
+            Button btnEditar = new Button("Editar");
+            btnEditar.getStyleClass().add("button-editar");
+            btnEditar.setOnAction(e -> {
+                Material material = getTableView().getItems().get(getIndex());
+                mostrarFormularioEdicion(material);
+            });
+            setGraphic(btnEditar);
+        }
+    }
+});
         
         // Ajustar anchos
         colSeleccion.setPrefWidth(50);
@@ -248,23 +248,26 @@ private void agregarMaterial() {
     }
 }
     
-    private void mostrarDetalles(Material material) {
-        try {
-            Material materialCompleto = materialDAO.buscarPorId(material.getIdMaterial());
-            
-            PantallaPrincipalController.abrirVentanaModal(
-                "Detalles de Material", 
-                "/fxml/MaterialDetalles.fxml", 
-                materialCompleto
-            );
+    private void mostrarFormularioEdicion(Material material) {
+    try {
+        Material materialCompleto = materialDAO.buscarPorId(material.getIdMaterial());
+        
+        boolean guardado = PantallaPrincipalController.abrirVentanaModal(
+            "Editar Material", 
+            "/fxml/MaterialEditarForm.fxml", 
+            materialCompleto
+        );
+        
+        if (guardado) {
             cargarDatos();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            mostrarAlerta("Error", "Error al cargar detalles", 
-                         "No se pudieron cargar los detalles del material: " + e.getMessage(), 
-                         Alert.AlertType.ERROR);
         }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        mostrarAlerta("Error", "Error al cargar formulario", 
+                     "No se pudo cargar el formulario de edición: " + e.getMessage(), 
+                     Alert.AlertType.ERROR);
     }
+}
     
     private void actualizarBotonReporte() {
         btnGenerarReporte.setDisable(materialesSeleccionados.isEmpty());

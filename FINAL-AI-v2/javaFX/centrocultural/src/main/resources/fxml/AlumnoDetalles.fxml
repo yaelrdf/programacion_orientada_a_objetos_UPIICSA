@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 
-<VBox spacing="15.0" prefWidth="700.0" prefHeight="500.0"
+<VBox spacing="15.0" prefWidth="1200.0" prefHeight="700.0"
       xmlns="http://javafx.com/javafx/11.0.1" 
       xmlns:fx="http://javafx.com/fxml/1" 
       fx:controller="com.centrocultural.controllers.AlumnoDetallesController">
@@ -47,7 +47,37 @@
         <Label fx:id="lblEdad" GridPane.columnIndex="3" GridPane.rowIndex="2" />
     </GridPane>
     
-    <!-- Inscripciones -->
+    <!-- Nueva sección para inscribir a actividad -->
+    <Label text="Inscribir a nueva actividad" styleClass="section-header">
+        <font>
+            <Font size="16.0" />
+        </font>
+    </Label>
+    
+    <GridPane hgap="10.0" vgap="10.0">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30.0" />
+            <ColumnConstraints percentWidth="70.0" />
+        </columnConstraints>
+        
+        <Label text="Actividad:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <ComboBox fx:id="cbActividades" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        
+        <Label text="Grupo:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <ComboBox fx:id="cbGrupos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        
+        <Label text="Fecha de vencimiento:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <DatePicker fx:id="dpFechaVencimiento" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        
+        <Label text="Monto de pago:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="txtMonto" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    </GridPane>
+    
+    <HBox spacing="10.0" alignment="CENTER_RIGHT">
+        <Button text="Inscribir" onAction="#inscribir" styleClass="button-primary" />
+    </HBox>
+    
+    <!-- Inscripciones existentes -->
     <Label text="Inscripciones" styleClass="section-header">
         <font>
             <Font size="16.0" />
@@ -59,8 +89,10 @@
             <TableColumn fx:id="colActividad" text="Actividad" prefWidth="200.0" />
             <TableColumn fx:id="colGrupo" text="Grupo" prefWidth="150.0" />
             <TableColumn fx:id="colFechaInscripcion" text="Fecha Inscripción" prefWidth="120.0" />
+            <TableColumn fx:id="colFechaVencimiento" text="Vencimiento" prefWidth="120.0" />
             <TableColumn fx:id="colEstadoPago" text="Estado Pago" prefWidth="100.0" />
             <TableColumn fx:id="colEstado" text="Estado" prefWidth="80.0" />
+            <TableColumn fx:id="colAcciones" text="Acciones" prefWidth="400.0" />
         </columns>
         <placeholder>
             <Label text="No hay inscripciones registradas" />

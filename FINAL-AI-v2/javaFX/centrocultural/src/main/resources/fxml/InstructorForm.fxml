@@ -55,4 +55,6 @@
         <Button fx:id="btnGuardar" text="Guardar" onAction="#guardar" 
                 styleClass="button-primary" prefWidth="100.0" />
     </HBox>
+
+    
 </VBox>

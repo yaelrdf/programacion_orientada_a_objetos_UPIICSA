@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.centrocultural.controllers.GruposController"
+      spacing="15.0" styleClass="content">
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    
+    <HBox spacing="10.0" alignment="CENTER_LEFT">
+        <Label text="Gestión de Grupos" styleClass="title">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Region HBox.hgrow="ALWAYS" />
+        <TextField fx:id="txtBuscar" promptText="Buscar..." />
+        <Button text="Buscar" onAction="#buscar" styleClass="button-primary" />
+        <Button text="Agregar" onAction="#agregar" styleClass="button-success" />
+    </HBox>
+    
+    <Separator />
+    
+    <TableView fx:id="tablaGrupos" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50.0" />
+            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150.0" />
+            <TableColumn fx:id="colActividad" text="Actividad" prefWidth="200.0" />
+            <TableColumn fx:id="colInstructor" text="Instructor" prefWidth="200.0" />
+            <TableColumn fx:id="colHorario" text="Horario" prefWidth="150.0" />
+            <TableColumn fx:id="colAcciones" text="Acciones" prefWidth="120.0" />
+        </columns>
+        <placeholder>
+            <Label text="No hay grupos registrados" />
+        </placeholder>
+    </TableView>
+</VBox>
