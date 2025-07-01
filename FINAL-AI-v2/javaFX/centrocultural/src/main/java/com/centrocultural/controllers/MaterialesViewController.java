@@ -229,14 +229,24 @@ public class MaterialesViewController implements Initializable, BaseController {
         cargarDatos();
     }
     
-    private void agregarMaterial() {
+    // Reemplaza el método agregarMaterial() con este:
+private void agregarMaterial() {
+    try {
+        // Asegúrate de que la ruta del FXML sea correcta
         PantallaPrincipalController.abrirVentanaModal(
             "Agregar Material", 
-            "/fxml/MaterialForm.fxml", 
+            "/fxml/MaterialesForm.fxml",  // Ajusta esta ruta según tu estructura de paquetes
             null
         );
+        // Actualizar la tabla después de cerrar el formulario
         cargarDatos();
+    } catch (Exception e) {
+        e.printStackTrace();
+        mostrarAlerta("Error", "Error al abrir formulario", 
+                     "No se pudo abrir el formulario de material: " + e.getMessage(), 
+                     Alert.AlertType.ERROR);
     }
+}
     
     private void mostrarDetalles(Material material) {
         try {
