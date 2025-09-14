@@ -1,5 +1,12 @@
 # Programacion orientada a objetos
 
+## Gracias
+Gracias a todos los que contribuyeron al desarrollo de este respositorio, gracias a todos los que toleraron algunas decisiones mal tomadas. Aceptando el rumbo de desarrollo del proyecto.
+
+Agradezco mucho la confianza y tolerancia prestadas
+
+![Adios](image-1.png)
+
 
 Repositorio de trabajo de programacion para programacion orientada a objetos UPIICSA
 
